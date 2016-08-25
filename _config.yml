@@ -1,0 +1,40 @@
+
+title: "LocNguyenX"	#must be maximum 9 chars to not break the sidebar
+description: "A place to record & share my notes..."
+url: "http://locxng.com"
+author: locnx
+
+
+author-image: favicon-62
+
+baseurl: ''  # the subpath of your site, e.g. /blog
+
+# Build settings
+markdown: kramdown
+
+
+#color scheme
+sidebar-color: '#2b2b3b'       #those apostrophes are important
+accent-color: '#004d4d'     #those apostrophes are important
+
+
+#social
+github: https://github.com/locnguyenx
+linkedin: https://vn.linkedin.com/in/loc-nguyen-xuan-83051347
+email: loc.nguyenxuan@gmail.com
+
+#Other
+analytics: 'UA-83154928-1'
+google-custom-search-cx: '008787842287427824110:bd6ovs0skhk'        #Create Custom Search Engine(CSE) with google and find this ID in the code they provide.
+
+destination: ./_site
+permalink: /:title/
+paginate: 6
+paginate_path: /page:num/
+
+sass:
+    style: compressed
+    
+gems: [jekyll-paginate]
+
+author-image: /assets/favicon-62.png
