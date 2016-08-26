@@ -4,7 +4,8 @@ _gh_pages
 .ruby-version
 
 # Ignore all _site files but auto generated ones for taggin
-_site/*
+_site
+!_site/tag/
 !_site/tag/*
 _site/tag/index.html
 
