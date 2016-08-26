@@ -3,8 +3,8 @@ layout: post
 title: GitHub Pages tut
 permalink: /github-pages-tut/
 author:    locnx
-keywords:  github pages jekyll linux bash
-menutitle: Tech
+tags: github jekyll linux markdown
+category: Features
 ---
 [version: 0.1]
 
@@ -13,6 +13,7 @@ menutitle: Tech
 - End-to-end guide to create GitHub site, setup Jekyll, config DNS, CNAME: [captainwhippet blog](http://captainwhippet.com/blog/2014/05/11/blog-setup-details.html)
 - start Jekyll locally with auto regeneration for update: 
 	`bundle exec jekyll s --force_polling`
+<!--more-->
 
 # GitHub official tuts
 
@@ -25,11 +26,20 @@ menutitle: Tech
 
 # Jekyll
 
+Homepage: [https://jekyllrb.com](https://jekyllrb.com)
+
 ### Theme
+
 - selected theme: [webjeda sidebar](https://blog.webjeda.com/jekyll-themes/sidebar/)
-- alternative, too complicated: [jekyllDecent from jwillmer blog](http://jwillmer.github.io/jekyllDecent/)
+- alternative: [jekyllDecent from jwillmer blog](http://jwillmer.github.io/jekyllDecent/)
+- [Tags, Plugins, more features](http://charliepark.org/tags-in-jekyll/)
+
+### Tags
+- [http://vrepin.org/vr/Tagging/](http://vrepin.org/vr/Tagging/)
+- [Tags In Jekyll](http://charliepark.org/tags-in-jekyll/)
 
 ### General content building guide
+
 - [Creating and Hosting a Personal Site on GitHub](http://jmcglone.com/guides/github-pages/)
 - [Get Started With GitHub Pages (Plus Bonus Jekyll)](https://24ways.org/2013/get-started-with-github-pages/)
 

@@ -1,1 +1,17 @@
 //Add any custom styles here
+.sidebar-nav > .sidebar-tag {
+    text-indent: 0;
+    margin: 10px;
+    height: 65px;
+    line-height: 30px;
+}
+
+.sidebar-nav > .sidebar-tag a {
+    display:inline;
+    color: #999999;
+}
+
+.sidebar-nav > .sidebar-tag a:hover {
+    color: #fff;
+    background: none;
+}

@@ -10,15 +10,42 @@
 				<li>
                     <a class="page-nav" href="{{site.baseurl}}/about/">About</a>
                 </li>
-				<li>
-                    <a class="page-nav" href="{{site.baseurl}}/blog/">Blog</a>
+				
+                <li>
+                    <a class="page-nav" href="{{site.baseurl}}/categories/">Categories</a>
+                </li>
+                <li>
+                    <a class="page-nav" href="{{site.baseurl}}/tag/">Tags</a>
                 </li>
                 <li>
                     <a class="page-nav" href="{{site.baseurl}}/archive/">Archive</a>
                 </li>
                 
-                   <li>
+                <li>
                     <a class="page-nav" href="{{site.baseurl}}/search/">Search</a>
                 </li>
+                <li class="sidebar-tag">
+                    <!-- Tags of Site -->
+                            {% comment %}
+                            <!-- Getting and sorting tags alphabetically -->
+                            {% endcomment %}
+
+                            {% capture mytags %}
+                            {% for tag in site.tags %}
+                                {{ tag [0]}}
+                            {% endfor %}
+                            {% endcapture %}
+                            {% assign sortedtags = mytags | split:' ' | sort %}
+
+                            {% comment %}
+                            <!-- Tags output: Name + link to the page with list of all the posts with the same tag -->
+                            {% endcomment %}
+                            
+                            {% for tag in sortedtags %}
+                            <a href="{{ site.baseurl }}/tag/{{tag}}">#{{tag}}</a>
+                            {% endfor %}
+                   
+                </li>
             </ul>
+
         </div>

@@ -3,9 +3,9 @@ title: "LocNguyenX"	#must be maximum 9 chars to not break the sidebar
 description: "A place to record & share my notes..."
 url: "http://locxng.com"
 author: locnx
-
-
 author-image: favicon-62
+keywords: moqui banking erp order inventory github jekyll
+
 
 baseurl: ''  # the subpath of your site, e.g. /blog
 
@@ -14,8 +14,8 @@ markdown: kramdown
 
 
 #color scheme
-sidebar-color: '#2b2b3b'       #those apostrophes are important
-accent-color: '#004d4d'     #those apostrophes are important
+sidebar-color: '#000'       #those apostrophes are important
+accent-color: '#003366'     #those apostrophes are important old 00394d
 
 
 #social
@@ -31,6 +31,8 @@ destination: ./_site
 permalink: /:title/
 paginate: 6
 paginate_path: /page:num/
+
+excerpt_separator: <!--more-->
 
 sass:
     style: compressed
