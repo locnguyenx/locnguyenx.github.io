@@ -9,24 +9,29 @@ category: Features
 
 ### Quickstart
 
-- GitHub guide: create site on GitHub [*[1]*](#ref1)
-- GitHub guide: setting up with Jekyll [*[2]*](#ref2)
-- GitHub guide: using Jekyll with Pages [*[3]*](#ref3)
-- Adding a Jekyll theme to your GitHub Pages site [*[4]*](#ref4)
+1. Create an User site on GitHub [*[1]*](#ref1)
+2. Using Jekyll to generate static site hosted on GitHub Pages [*[2]*](#ref2)
+3. Adding a Jekyll theme to your GitHub Pages site [*[3]*](#ref3)
+
+DONE!
 
 <!--more-->
 
-### More details
+### Step further
+
+#### Basic guide
+
+- Jekyll homepage: [https://jekyllrb.com](https://jekyllrb.com)
+- Setting up site locally with Jekyll [*[4]*](#ref4)
+
+#### Completed guides
 
 - End-to-end guide to create GitHub site, setup Jekyll, config DNS, CNAME [*[1]*](#ref5)
-- __Tips:__ for proofing, start Jekyll locally with auto regeneration for update: 
+
+>**Tips:** for proofing, start Jekyll locally with auto regeneration for update: 
 	`bundle exec jekyll s --force_polling`
-
-### Work with Jekyll
-
-Homepage: [https://jekyllrb.com](https://jekyllrb.com)
-
-#### Installation
+	
+#### Jekyll Installation
 
 ##### Linux
 
@@ -55,7 +60,8 @@ gem install bundler jekyll
 
 rbenv rehash
 ```
-__Notes__: if rbenv not work, try `source ~/.bashrc` or `source ~/.bash_profile`
+
+>**Notes**: if rbenv not work, try `source ~/.bashrc` or `source ~/.bash_profile`
 
 - Install JS runtime:
 	- `gem install execjs`{:.language-bash}
@@ -77,7 +83,7 @@ Use alternatively 1 of following:
 - [How to install Jekyll and pages-gem on Windows (x64)](http://jwillmer.de/blog/tutorial/how-to-install-jekyll-and-pages-gem-on-windows-10-x46)
 - Problems: Jekyll is not supported for Windows officially. There's some unresolved bug, i.e with '/' in file path
 
-__Notes__: I droped this option due to it's too annoying
+>**Notes**: I droped this option due to it's too annoying
 
 #### Theme
 
@@ -98,9 +104,9 @@ Hyde, [jekyllDecent](http://jwillmer.github.io/jekyllDecent/)
 
 __Links__:
 
-- <a name="ref1">[1]</a> [GitHub guide: create site on GitHub](pages.github.com)
-- <a name="ref2">[2]</a> [GitHub guide: setting up with Jekyll](https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/)
-- <a name="ref3">[3]</a> [GitHub guide: using Jekyll with Pages](https://help.github.com/articles/using-jekyll-with-pages)
-- <a name="ref4">[4]</a> [Adding a Jekyll theme to your GitHub Pages site](https://help.github.com/articles/adding-a-jekyll-theme-to-your-github-pages-site/)
+- <a name="ref1">[1]</a> [GitHub guide: create site on GitHub](https://pages.github.com)
+- <a name="ref2">[2]</a> [GitHub guide: Using Jekyll to generate static site hosted on GitHub Pages](https://help.github.com/articles/using-jekyll-with-pages)
+- <a name="ref3">[3]</a> [Adding a Jekyll theme to your GitHub Pages site](https://help.github.com/articles/adding-a-jekyll-theme-to-your-github-pages-site/)
+- <a name="ref4">[4]</a> [GitHub guide: Setting up your GitHub Pages site locally with Jekyll](https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/)
 - <a name="ref5">[5]</a> [End-to-end guide to create GitHub site, setup Jekyll, config DNS, CNAME:http://captainwhippet.com/blog/2014/05/11/blog-setup-details.html](http://captainwhippet.com/blog/2014/05/11/blog-setup-details.html)
 - <a name="ref10">[10]</a> [Install Ruby on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-ubuntu-16-04)
