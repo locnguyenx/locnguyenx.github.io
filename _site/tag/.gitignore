@@ -1,5 +1,0 @@
-# Ignore everything
-/*
-# Keep all subfolders that were auto generated ones for tagging
-!.gitignore
-!*/
