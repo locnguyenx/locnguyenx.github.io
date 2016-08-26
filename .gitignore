@@ -1,7 +1,12 @@
 # Ignore docs files
 _gh_pages
-_site
+
 .ruby-version
+
+# Ignore all _site files but auto generated ones for taggin
+_site/*
+!_site/tag/*
+_site/tag/index.html
 
 # Numerous always-ignore extensions
 *.diff
