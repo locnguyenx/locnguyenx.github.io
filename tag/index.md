@@ -4,7 +4,7 @@ title: All tags list
 desc: List all tags of this site. The page with posts by tag will be generated automatically as hierachy dirs.
 permalink: /tag/
 ---
-
+<section id="tags">
     <ul>  
         {% capture tags %}
         {% for tag in site.tags %}
@@ -15,11 +15,12 @@ permalink: /tag/
 
         {% for tagName in sortedtags %}            
         <li>
-                <a href="">{{ tagName }}</a>
+                <a href="{{site.baseurl}}/tag/{{ tagName }}">#{{ tagName }}</a>
         </li>
         {% endfor %}
         
     </ul>
+</section>    
 
 
 

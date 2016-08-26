@@ -10,7 +10,8 @@
         </h2>
         <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
         {% if post.excerpt %}
-            <p>{{ post.excerpt | strip_html }}... <i><a href="{{ post.url | prepend: site.baseurl }}">[more]</a></i></p>
+            <p>{{ post.excerpt }}... <i><a href="{{ post.url | prepend: site.baseurl }}">[more]</a></i></p>
+            <!-- consider `| strip_html`-->
         {% endif %}
         
       </li>
