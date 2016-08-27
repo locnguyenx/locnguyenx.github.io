@@ -1,0 +1,32 @@
+default:                                                      # Fallback if nothing is specified
+  initial:      locnx                                      # used for author lookup in posts and for first two characters in the about page back button
+  name:         "Nguyen Xuan Loc"                                # used to display author name
+  cover:        /assets/mountain-alternative-cover.jpg        # OPTIONAL: defines location of cover image in about page
+  picture:      /assets/favicon-62.png                          # OPTIONAL: author picture
+  bio:          "banking, financial, & enterprise technology"           # OPTIONAL: text below author name in posts
+  location:     Viet Nam                                       # OPTIONAL: used to display location of the author
+  website:      "http://www.locxng.com/about"                    # OPTIONAL: link to the author of a post
+  email:                                          # OPTIONAL: used in the about page
+  twitter:                                         # OPTIONAL: used in the about page
+  linkedin:     loc-nguyen-xuan-83051347                      # OPTIONAL: used in the about page
+  xing:                                                       # OPTIONAL: used in the about page
+  github:       locnguyenx                                      # OPTIONAL: used in the about page
+  stackoverflow:                                              # OPTIONAL: used in the about page
+  facebook:                                                   # OPTIONAL: used in the about page
+  gplus:                                                      # OPTIONAL: used in the about page
+  soundcloud:                                                 # OPTIONAL: used in the about page
+  youtube:                                                    # OPTIONAL: used in the about page
+  pinterest:                                                  # OPTIONAL: used in the about page
+  dribble:                                                    # OPTIONAL: used in the about page
+  behance:                                                    # OPTIONAL: used in the about page
+locnx:
+  initial:      locnx
+  name:         "Nguyen Xuan Loc"
+  cover:        /assets/mountain-alternative-cover.jpg
+  picture:      /assets/favicon-62.png
+  bio:          "banking, financial, & enterprise technology"   
+  location:     Viet Nam
+  website:      "http://www.locxng.com/about"
+  email:        
+  linkedin:     loc-nguyen-xuan-83051347
+  github:       locnguyenx

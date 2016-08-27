@@ -1,0 +1,35 @@
+---
+layout: page
+---
+{% if site.data.authors and site.data.authors[page.author] %}
+{% assign author = site.data.authors.[page.author] %}
+{% elsif site.data.authors %}
+{% assign author = site.data.authors[0] %}
+{% endif %}
+
+{% assign counter = 0 %}
+{% for post in site.posts %}
+    {% unless post.draft or post.author != author.initial %}
+        {% assign counter = counter | plus: 1 %}
+    {% endunless %}
+{% endfor %}
+
+<section itemprop="author" itemscope itemtype="http://schema.org/Person">
+    
+    <div>
+        {% if author.bio %} <span itemprop="description">{{author.bio}}</span> {% endif %}
+
+        <div class="post-meta">
+            {%  if author.email %}<a href="mailto:{{ author.email }}" itemprop="email">@eMail</a>{% endif %}
+
+            {%  if author.twitter %}<a href="https://twitter.com/{{ author.twitter }}" itemprop="sameAs" >Twitter</a> {% endif %}
+            {%  if author.linkedin %}<a href="https://www.linkedin.com/in/{{ author.linkedin }}" itemprop="sameAs">@LinkedIn</a> {% endif %}
+            
+            {%  if author.github %}<a href="https://github.com/{{ author.github }}" itemprop="sameAs" >@GitHub</a> {% endif %}
+            
+            {%  if author.facebook %}<a href="https://www.facebook.com/{{ author.facebook }}" itemprop="sameAs" >@Facebook</a> {% endif %}
+            
+        </div>                                   
+    </div>                                       
+</section>                                       
+{{content}}

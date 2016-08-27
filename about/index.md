@@ -1,11 +1,10 @@
 ---
-layout: page
-title: About
-description: About me...
+layout: about
+title: About me
+author: locnx
+description: My personal info
 permalink: /about/
 ---
-
-{{ site.description }}
 
 ## Profile
 

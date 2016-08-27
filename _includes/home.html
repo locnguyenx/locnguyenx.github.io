@@ -1,21 +1,27 @@
-<!-- home content used in blog/index-->
-<h1 class="page-heading">Blog</h1>
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        
-        <h2 id="post-index">
-         <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-        {% if post.excerpt %}
-            <p>{{ post.excerpt }}... <i><a href="{{ post.url | prepend: site.baseurl }}">[more]</a></i></p>
-            <!-- consider `| strip_html`-->
-        {% endif %}
-        
-      </li>
+<!-- home content used in blog/index-->
+<main class="page-content" role="main">
+    {% for post in site.posts %}        
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+            <header>
+                <h1 class="post-title" itemprop="name headline"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+                </h1>
+            </header>
+            <section class="post-meta">
+                <time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date: "%b %-d, %Y" }}</time> 
+                • 
+                {% for tag in post.tags %}
+                <span>#{{ tag }}</span>
+                {% endfor %}
+            </section>
+            <section id="post-excerpt" class="post-content" itemprop="articleBody">            
+                  {% if post.excerpt %}
+                      <p>{{ post.excerpt }}... <i><a href="{{ post.url | prepend: site.baseurl }}">[more]</a></i></p>
+                      <!-- consider `| strip_html`-->
+                  {% endif %}
+            </section>      
+        </article>  
     {% endfor %}
-  </ul>
+</main>  
 
 

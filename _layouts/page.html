@@ -2,7 +2,13 @@
 layout: default
 ---
 
-<div class="page-content">
-<h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
-{{ content }}
-</div>
+<main class="page-content" role="main">
+    <article itemscope itemtype="http://schema.org/BlogPosting">
+        <header>
+            <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>           
+        </header>
+        <section class="post-content" itemprop="articleBody">
+            {{content}}
+        </section>
+    </article>
+</main>
