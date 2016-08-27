@@ -2,6 +2,13 @@
 <div itemprop="comment" id="disqus_thread"></div>
 
 <script defer>
+
+var disqus_config = function () {
+   // _config.yml should define the site's URL
+   this.page.url = '{{ site.url }}{{ page.url }}';
+   // Using an optional disqus_identifier variable, or the site.url + page.id combination
+   this.page.identifier = '{% if page.disqus_identifier %}{{ page.disqus_identifier}}{% else %}{{ site.url }}{{ page.id }}{% endif %}';
+ };
   
 (function() {
 var d = document, s = d.createElement('script');

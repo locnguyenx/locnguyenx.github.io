@@ -39,12 +39,12 @@ table {
         </header>
 
         <section class="post-meta">
-                <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time> 
-                • 
-                {% for tag in page.tags limit:5 %}
-                <span>#{{ tag }}</span>
-                {% endfor %}
-            </section>
+            <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time> 
+            • 
+            {% for tag in page.tags limit:5 %}
+            <span>#{{ tag }}</span>
+            {% endfor %}
+        </section>
     
         <section class="post-content" itemprop="articleBody">
             {{content}}
