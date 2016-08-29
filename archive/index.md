@@ -22,7 +22,8 @@ adallow: 0
   <ul class="past">
   {% endif %}
   {% endunless %}
- <li class="arch-list"><a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a>&nbsp;<time>{{ post.date | date:"%d %b" }}</time></li>
+ <li class="arch-list"><a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a>
+  </li>
 {% endfor %}
   </ul>
 </section>
