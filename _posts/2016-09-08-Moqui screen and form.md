@@ -29,7 +29,7 @@ category: Moqui
     - [form-list](#form-list)
 
 <!-- /MarkdownTOC -->
-
+<!--more-->
 
 # Overview
 
@@ -37,9 +37,9 @@ This document will focus to design Moqui XMLScreen including Form, manipulation 
 
 __Related Schemas__
 
-    - common-types-2.0.xsd: http://moqui.org/xsd/common-types-2.0.xsd
-    - xml-actions-2.0.xsd: http://moqui.org/xsd/xml-actions-2.0.xsd
-    - xml-form-2.0.xsd: http://moqui.org/xsd/xml-screen-2.0.xsd
+* common-types-2.0.xsd: [http://moqui.org/xsd/common-types-2.0.xsd](http://moqui.org/xsd/common-types-2.0.xsd)
+* xml-actions-2.0.xsd: [http://moqui.org/xsd/xml-actions-2.0.xsd](http://moqui.org/xsd/common-types-2.0.xsd)
+* xml-form-2.0.xsd: [http://moqui.org/xsd/xml-screen-2.0.xsd](http://moqui.org/xsd/common-types-2.0.xsd)
 
 # Working with XMLScreen
 
@@ -51,12 +51,13 @@ __By Service:__
 
 System has 2 options to validate the form fields:
 
-1. If __transition__ of the form has a `singleServiceName` (has <service-call> tag, instead of multiple service call in <actions> tag)
+1. If __transition__ of the form has a `singleServiceName` (has `<service-call>` tag, instead of multiple service call in `<actions>` tag)
     - If `singleServiceName` is used-defined type, system will validate form field against respected in-paramater of `singleServiceName` 
     - Otherwise (`singleServiceName` is entity-auto type), will validate against Entity fields
     
-2. Otherwise, use <auto-fields-service service-name='name'> definition of the form
-    Add more attribute into field definition:
+2. Otherwise, use `<auto-fields-service service-name='name'>` definition of the form
+
+To validate form, System adds more attribute into each field definition:
     - validate-service: service-name
     - validate-parameter: name of respected service parameter
 
@@ -65,7 +66,10 @@ Notes: if service-name is a Entity-Auto service, then the rule of `auto-fields-e
 __By Entity:__
 
 Using following tag inside the form definition:
+
+```xml
 < auto-fields-entity entity-name='Name of Entity to generate fields automatically for form'/>
+```
 
 Underlying, system will addd more attribute into field definition:
     - validate-entity: entity-name
@@ -75,7 +79,7 @@ __How it works:__
 
 Processing is done in `ScreenForm.groovy`
 
-1. While rebuild __form definition__, system will check if either following tag is existing: __auto-fields-service__/__auto-fields-entity__, then add attribute `validate-service` or `validate-entiy` respectly into each __field definition__
+1. While rebuilding form definition, system will check if either following tag is existing: __auto-fields-service__/__auto-fields-entity__, then add attribute `validate-service` or `validate-entiy` respectly into each field definition
 
 2. Checking form __transition__: populate __validate-service__ and __validate-entity__ attributes if the target transition calls a single service, override attributes from previous steps
     1. if the field matches an in-parameter name, then set:
@@ -388,18 +392,18 @@ Address.xml
 
 ### subscreens-item
 
-We can reuse a existing Screen without explicit redeisng it (or copy/paste). 
+We can reuse a existing Screen without explicit redesign it (or copy/paste). 
 
-After declaration the subscreen, we can use it in transition's url or render it to display as normal:
+After declaration the `subscreens-item`, we can use it in transition's url or render it as a normal subscreen:
 
 ```xml
 <subscreens-item name="ScreenName" location="resource location"/>
 ```
-Example: `<subscreens-item name="UpdateContactInfo" location="component://SimpleScreens/screen/SimpleScreens/Party/EditParty/UpdateContactInfo.xml"/>`
+Example: 
 
-### section-include
-
-### transition-include
+```xml
+<subscreens-item name="UpdateContactInfo" location="component://SimpleScreens/screen/SimpleScreens/Party/EditParty/UpdateContactInfo.xml"/>
+```
 
 ### Include a widget-template
 
@@ -429,10 +433,12 @@ Using template
 </widget-template-include>
 ```
 
-__Include a html in widget__
+### Include a html in widget
 
 ```xml
-<widgets><render-mode><text type="html" location="component://SimpleScreens/template/party/ContactInfo.html.gstring"/></render-mode></widgets>
+<widgets>
+<render-mode><text type="html" location="component://SimpleScreens/template/party/ContactInfo.html.gstring"/></render-mode>
+</widgets>
 ```
 
 # Brief of Screen components
@@ -441,11 +447,12 @@ __Include a html in widget__
 
 ### Attributes
 - __require-authentication__: type=true/false/anonymous-all/anonymous-view default="true"
-- __include-child-content__: _will check_
-- __standalone__: If set to true this screen will be rendered without rendering any parent screens. It can still be referred to as a subscreen of its parent, but when rendered the parent will not run, the rendering will start at this screen. Any non-standalone children will still be treated as normal subscreens.
+- __include-child-content__: _(will check)_
+- __standalone__: 
+If set to true this screen will be rendered without rendering any parent screens. It can still be referred to as a subscreen of its parent, but when rendered the parent will not run, the rendering will start at this screen. Any non-standalone children will still be treated as normal subscreens.
 - __default-menu-title__
 - __default-menu-index__
-- __default-menu-include__: type="boolean" default="true"
+- __default-menu-include__: (type="boolean" default="true")     
     Set this to false to not automatically appear in the parent's subscreens menu based on the directory it is in. If true this screen will automatically be included in the parent's subscreens menu.
 - __menu-image__
 - __menu-image-type__
@@ -455,21 +462,20 @@ __Include a html in widget__
 #### parameter
 
 - minOccurs="0" maxOccurs="unbounded"
-- documentation: 
-    These are the parameters the screen expects or allows to be passed in, and where the calling screen can get them from by default (usually just default to the same from, but can be a static value for default or whatever).
-    Individual transition, transition.*-response and other elements can override where the parameter comes from with their own parameter sub-elements.
+- documentation:    
+These are the parameters the screen expects or allows to be passed in, and where the calling screen can get them from Individual transition, transition.*-response and other elements can override where the parameter comes from with their own parameter sub-elements.
 
 #### always-actions
 
 - minOccurs="0"
-- documentation:
-    These actions always run when this screen appears in a screen path, including both screen rendering and transition running. One difference between this and the pre-actions element is that this runs before transitions are processed while pre-actions do not. The always-actions also run for all screens in a path while the pre-actions only run for screens that will be rendered.
+- documentation:    
+These actions always run when this screen appears in a screen path, including both screen rendering and transition running. One difference between this and the pre-actions element is that this runs before transitions are processed while pre-actions do not. The always-actions also run for all screens in a path while the pre-actions only run for screens that will be rendered.
 
 #### pre-actions
 
 - minOccurs="0"
-- documentation:
-    These actions run before any of the screens (this screen or any parent screens) are rendered, allowing you to set parameters used by parent screens or other general reasons.
+- documentation:    
+These actions run before any of the screens (this screen or any parent screens) are rendered, allowing you to set parameters used by parent screens or other general reasons.
 
 #### actions
 
@@ -484,20 +490,19 @@ __Include a html in widget__
 ## transition
 
 ### Attributes
-- __name__ 
+- __name__     
     Transition names should be camel-cased and start with an lower-case letter (whereas screen filenames and subscreens-item names start with a upper-case letter).
 
     The transition name is used in link and other elements in place of URLs when going to another screen within this application. The transition name will appear briefly as the URL before the redirect is done for the transition response.
-
 - __method__ any/put/get/post/delete
-- __begin-transaction__ type="boolean" default="true"
-- __read-only__ type="boolean" default="false"
+- __begin-transaction__ (type="boolean" default="true")
+- __read-only__ (type="boolean" default="false")    
     Declare that this transition does only read operations to skip the check for insecure parameters.
-
-- __require-session-token__ default="true" type="boolean"
+- __require-session-token__ (default="true" type="boolean")    
     If not false (default true) moquiSessionToken (from ec.web.sessionToken) must be passed to this transition for all requests in a session after the first.
 
 ### Children elements
+
 #### parameter
 These are the parameters the transition expects or allows to be passed in, and where the calling screen can get them from by default (usually just default to the same from, but can be a static value for default or whatever).
 
@@ -557,7 +562,7 @@ Those are included with the widgets using the "subscreens-menu" and "subscreens-
 "subscreens-panel" element.
 
 ### Attributes
-- __default-item__ 
+- __default-item__     
     The name of the default subscreen-item. Used when then screen-path ends on this screen so we know which subscreen-item to activate.
 
     If empty the first subscreen-item will be the default.
@@ -565,12 +570,12 @@ Those are included with the widgets using the "subscreens-menu" and "subscreens-
 ### Children elements
 
 #### subscreens-item
-     One way to add a subscreen. This is most commonly used to refer to a subscreen that is located in another application, another part of this application, that is not in any application and is meant to be shared, or is in a different type of location than the parent screen.
+One way to add a subscreen. This is most commonly used to refer to a subscreen that is located in another application, another part of this application, that is not in any application and is meant to be shared, or is in a different type of location than the parent screen.
 
-    One subscreens-item is active at a time, meaning that screen is shown and the tab/etc for that screen is highlighted.
+One subscreens-item is active at a time, meaning that screen is shown and the tab/etc for that screen is highlighted.
 
 #### conditional-default
-    use a `condition`, which is a Groovy condition expression (evaluates to a boolean) used to determine if the specified subscreens item is the one to use by default instead of the on specified in the subscreens.@default-item attribute.
+Use a `condition`, which is a Groovy condition expression (evaluates to a boolean) used to determine if the specified subscreens item is the one to use by default instead of the on specified in the subscreens.@default-item attribute.
 
 ## subscreens-menu
 
@@ -600,30 +605,33 @@ Those are included with the widgets using the "subscreens-menu" and "subscreens-
 
 __Attributes of text__
 
-- __type__ default="any"
-    Can be anything. Default supported values include: text, cwiki, html, xsl-fo, xml, and csv.A value of "any" will cause it to be used if no other element matches the current output type.
-- __location__ This is the template or text file location and can be any location supported by the Resource Facade including file, http, component, content, etc.
-- __template__ type="boolean" default="true"
+- __type__ default="any"    
+    Can be anything. Default supported values include: text, cwiki, html, xsl-fo, xml, and csv. A value of "any" will cause it to be used if no other element matches the current output type.
+- __location__     
+    This is the template or text file location and can be any location supported by the Resource Facade including file, http, component, content, etc.
+- __template__ (type="boolean" default="true")    
     Interpret the text at the location as an FTL or other template? Supports any template type supported by the Resource Facade.
+
     Defaults to true, set to false if you want the text included literally.
 
-- __encode__ default="false" type="boolean"
+- __encode__ default="false" type="boolean"    
     If true the text will be encoded so that it does not interfere with markup of the target output. Templates ignore this setting and are never encoded.
+
     For example, if output is HTML then data presented will be HTML encoded so that all HTML-specific characters are escaped.
 
 ### section
-- __name__ >A name for the section, used for reference within the screen. Must be specified and must be unique within the screen
+- __name__ A name for the section, used for reference within the screen. Must be specified and must be unique within the screen
 - __condition__ A condition expression, just like the section.condition.expression element but more concise.
 
 ### section-iterate
-- __name__ >A name for the section, used for reference within the screen. 
+- __name__ A name for the section, used for reference within the screen. 
 - __list__ The name of the field that contains the list to iterate over.
 - __entry__ The name of the field that will contain each entry as we iterate through the list.
 - __key__ If list points to a Map or List of MapEntry the key will be put where this refers to, the value where the entry attribute refers to.
 - __condition__ A condition expression, just like the section-iterate.condition.expression element but more concise.
 
 ### section-include
-- __name__ >A name for the section, used for reference within the screen. Must be specified and must be unique within the screen
+- __name__ A name for the section, used for reference within the screen. Must be specified and must be unique within the screen
 - __location__ Location of the screen containing the section to include. Example: `location="component path to ScreenName.xml#SectionNameToBeIncluded"`
 
 #### container
@@ -631,7 +639,7 @@ __Attributes of text__
 #### container-box
 
 #### container-row
-    A responsive 12-column grid row. For the concept and one possible implementation see http://getbootstrap.com/css/#grid
+A responsive 12-column grid row. For the concept and one possible implementation see http://getbootstrap.com/css/#grid
 
 ### container-panel
 This panel can have up to five areas: header, left, center, right, footer. Only the center area is required. This can be re-used within the different areas as well, usually just the center area but could be used to split up even the header and footer.
@@ -639,8 +647,10 @@ This panel can have up to five areas: header, left, center, right, footer. Only 
 If there is an id for the outer container, and each area will have an automatic id as well (with a suffix of: _header, _left, _center, _right, _footer).
 
 ___Attributes:___ 
+
 - __panel-center__ required
-- __dynamic__ default="false" type="boolean". When true uses a dynamic layout, by default with jQuery Layout (see http://layout.jquery-dev.net/). When false (default) uses a static HTML/CSS layout.
+- __dynamic__ default="false" type="boolean"    
+    When true uses a dynamic layout, by default with jQuery Layout (see http://layout.jquery-dev.net/). When false (default) uses a static HTML/CSS layout.
 
 ### container-dialog
 The contents start out hidden with only a button with the button-text on it. When the button is clicked on a dialog opens to show the contents.
@@ -661,7 +671,7 @@ Automatically generate list of fields based on entity definition.
 __Attributes__
 - __entity-name__ required
 - __field-type__ default="find-display", value in [edit, find, display, find-display, hidden]
-- __include__ default="all", value in [pk, nonpk, all]
+- __include__ default="all", value in [pk, nonpk, all]      
     type of entity fields to be included in the form
 
 ### auto-fields-service
@@ -676,7 +686,7 @@ This is only true if __service-name__ is a user defined serivce, otherwise (if t
 __Attributes__
 - __service-name__ required
 - __field-type__ default="edit", value in [edit, find, display, find-display, hidden]
-- __include__ default="in", value in [in, out, all]
+- __include__ default="in", value in [in, out, all]     
     type of service parameters to be included in the form
 
 ### field
@@ -686,30 +696,35 @@ __Attributes__
 A single form is used to view or edit fields of a single map/hash/record/etc
 
 ### Attributes
-- __name__ 
+- __name__     
     The name of the form. Used to reference the form along with the XML Screen file location. For HTML output this is the form name and id, and for other output may also be used to identify the part of the output corresponding to the form.
+
     Form name must be unique in the screen. System can't check this rule but the rendering will have problem if there's duplication in form name 
-- __extends__ 
+
+- __extends__     
     The location and name separated by a hash/pound sign (#) of the form to extend. If there is no location it is treated as a form name in the current screen.
-- __transition__
+- __transition__    
     The transition in the current screen to submit the form to.
-- __map__
-    The Map to get field values from. Is often a EntityValue object or a Map with data pulled from various places to populate in the form. Map keys are matched against field names. This is ignored if the field.entry-name attribute is used, that is evaluated against the context in place at the time each field is rendered. Defaults to "fieldValues".
+- __map__    
+    The Map to get field values from. Is often a EntityValue object or a Map with data pulled from various places to populate in the form. Map keys are matched against field names. This is ignored if the field.entry-name attribute is used, that is evaluated against the context in place at the time each field is rendered. 
+
+    Defaults to "fieldValues".
+
 - __focus-field__
     The name of the field to focus on when the form is rendered.
-- __skip-start__ type="boolean" default="false"
+- __skip-start__ (type="boolean" default="false")    
     Skip the starting rendered elements of the form. When used after a form with skip-end=true this will effectively combine the forms into one
-- __skip-end__ type="boolean" default="false"
+- __skip-end__ (type="boolean" default="false")    
     Skip the ending rendered elements of the form. Use this to leave a form open so that additional forms can be combined with it.
-- __dynamic__ type="boolean" default="false"
+- __dynamic__ (type="boolean" default="false")    
     If true this form will be considered dynamic and the internal definition will be built up each time it is used instead of only when first referred to. This is necessary when auto-fields-* elements have ${} string expansion for service or entity names.
-- __background-submit__ type="boolean" default="false"
+- __background-submit__ (type="boolean" default="false")    
     Submit the form in the background without reloading the screen.
-- __background-reload-id__ 
+- __background-reload-id__     
     After the form is submitted in the background reload the dynamic-container with this id.
-- __background-hide-id__
+- __background-hide-id__    
     After the form is submitted in the background hide the element (usually a dialog) with the specified id.
-- __background-message__ 
+- __background-message__     
     After the form is submitted in the background show this message in a dialog.
 
 ### Children elements
@@ -718,56 +733,57 @@ A single form is used to view or edit fields of a single map/hash/record/etc
 
 ## form-list
 A list form is a list of individual forms in a table (could be called a tabular form), it has a list of sets of values and creates one form for each list element.
+
 A variation on the list form is the multi form (set the attribute multi=true). In the multi mode all list elements will be put into a single large form with suffixes on each field for each row, with a single submit button at the bottom instead of a submit button on each row.
 
 ### Attributes
 - __name__ 
 - __extends__ 
-- __transition__
-all three attributes above are same as in `form-single`
-
+- __transition__ all three attributes above are same as in `form-single`
 - __row-actions__
-- __multi__ default="false" type="boolean"
+- __multi__ default="false" type="boolean"    
     Make the form a multi-submit form where all rows on a page are submitted together in a single request with a "_${rowNumber}" suffix on each field. Also passes a _isMulti=true parameter so the Service Facade knows to run the service (a single service-call in a transition) for each row. Defaults to true, so set to false to disable this behavior and have a separate form (submitted separately) for each row.
 
 - __list__ 
     An expression that evaluates to a list to iterate over.
 
-- __list-entry__ 
+- __list-entry__     
     If specified each list entry will be put in the context with this name, otherwise the list entry must be a Map and the entries in the Map will be put into the context for each row
+
     _Notes:_ 
     - if obmit, data binding in each field will automatically done using field name and the same key in context
     - if this attribute is specified, must define `entry-name` explicitly for each field
-- __paginate__ type="xs:string" default="true"
+
+- __paginate__ type="xs:string" default="true"    
     Indicate if this form should paginate or not. Defaults to true.
-- __paginate-always-show__ type="xs:string" default="true"
+- __paginate-always-show__ type="xs:string" default="true"    
     Always show the pagination control with count of rows, even when there is only one page? Defaults to true.
 - __skip-start, skip-end__ same as in `form-single`
-- __skip-form__ type="boolean" default="false"
+- __skip-form__ (type="boolean" default="false")    
     Make the output a plain table, not submittable (in HTML don't generate 'form' elements). Useful for view-only list forms to minimize output.
-- __skip-header__ type="boolean" default="false"
+- __skip-header__ (type="boolean" default="false")    
     Skip the table header element.
-- __header-dialog__ type="boolean" default="false"
+- __header-dialog__ (type="boolean" default="false")    
     Put header-field widgets in a dialog instead of the table header. Includes all fields with header widgets, not just those displayed.
-- __select-columns__ type="boolean" default="false"
+- __select-columns__ (type="boolean" default="false")    
     Enable per-user selection of which columns to display.
-- __saved-finds__ type="boolean" default="false"
+- __saved-finds__ (type="boolean" default="false")    
     Enable saved finds (query parameters, order by).
-- __show-csv-button__ type="boolean" default="false"
+- __show-csv-button__ (type="boolean" default="false")    
     Show a button to export as CSV (renderMode=csv), if the pagination header is displayed
-- __show-text-button__ type="boolean" default="false"
+- __show-text-button__ (type="boolean" default="false")    
     Show a button to export as plain text (renderMode=text), if the pagination header is displayed
-- __show-all-button__ type="boolean" default="false"
+- __show-all-button__ (type="boolean" default="false")    
     Show a button to display all results (pageNoLimit=true), if the pagination header is displayed
-- __dynamic__ type="boolean" default="false"
+- __dynamic__ (type="boolean" default="false")    
     If true this form will be considered dynamic and the internal definition will be built up each time it is used instead of only when first referred to. This is necessary when auto-fields-* elements have ${} string expansion for service or entity names.
-- __background-submit__ type="boolean" default="false"
+- __background-submit__ (type="boolean" default="false")    
     Submit the form in the background without reloading the screen.
-- __background-reload-id__ 
+- __background-reload-id__     
     After the form is submitted in the background reload the dynamic-container with this id.
-- __background-hide-id__
+- __background-hide-id__    
     After the form is submitted in the background hide the element (usually a dialog) with the specified id.
-- __background-message__ 
+- __background-message__     
     After the form is submitted in the background show this message in a dialog.
 
 ### Children elements
