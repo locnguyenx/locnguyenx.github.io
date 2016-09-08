@@ -166,6 +166,7 @@ Result: PK ID not requried
 Enxtends an existing form
 
 __Syntax:__
+
 - From external screen: `extends="<screen path>#<form name>”`
 - From same screen: `extends="<form name>”`
 
