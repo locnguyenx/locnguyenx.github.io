@@ -9,9 +9,9 @@ category: Features
 
 ### Quickstart
 
-1. Create an User site on GitHub [*[1]*](#ref1)
-2. Using Jekyll to generate static site hosted on GitHub Pages [*[2]*](#ref2)
-3. Adding a Jekyll theme to your GitHub Pages site [*[3]*](#ref3)
+1. Create an User site on GitHub [^1]
+2. Using Jekyll to generate static site hosted on GitHub Pages [^2]
+3. Adding a Jekyll theme to your GitHub Pages site [^3]
 
 DONE!
 
@@ -22,11 +22,11 @@ DONE!
 #### Basic guide
 
 - Jekyll homepage: [https://jekyllrb.com](https://jekyllrb.com)
-- Setting up site locally with Jekyll [*[4]*](#ref4)
+- Setting up site locally with Jekyll [^4]
 
 #### Completed guides
 
-- End-to-end guide to create GitHub site, setup Jekyll, config DNS, CNAME [*[1]*](#ref5)
+- End-to-end guide to create GitHub site, setup Jekyll, config DNS, CNAME [^5]
 
 >**Tips:** for proofing, start Jekyll locally with auto regeneration for update: 
 	`bundle exec jekyll s --force_polling`
@@ -35,8 +35,7 @@ DONE!
 
 ##### Linux
 
-- Install Ruby on Ubuntu 16.04 [*[10]*](#ref10)
-	
+- Install Ruby on Ubuntu 16.04 [^6]
 	TL;DR commands:
 	
 ```bash
@@ -104,9 +103,9 @@ Hyde, [jekyllDecent](http://jwillmer.github.io/jekyllDecent/)
 
 __Links__:
 
-- <a name="ref1">[1]</a> [GitHub guide: create site on GitHub](https://pages.github.com)
-- <a name="ref2">[2]</a> [GitHub guide: Using Jekyll to generate static site hosted on GitHub Pages](https://help.github.com/articles/using-jekyll-with-pages)
-- <a name="ref3">[3]</a> [Adding a Jekyll theme to your GitHub Pages site](https://help.github.com/articles/adding-a-jekyll-theme-to-your-github-pages-site/)
-- <a name="ref4">[4]</a> [GitHub guide: Setting up your GitHub Pages site locally with Jekyll](https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/)
-- <a name="ref5">[5]</a> [End-to-end guide to create GitHub site, setup Jekyll, config DNS, CNAME:http://captainwhippet.com/blog/2014/05/11/blog-setup-details.html](http://captainwhippet.com/blog/2014/05/11/blog-setup-details.html)
-- <a name="ref10">[10]</a> [Install Ruby on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-ubuntu-16-04)
+[^1]: [GitHub guide: create site on GitHub](https://pages.github.com)
+[^2]: [GitHub guide: Using Jekyll to generate static site hosted on GitHub Pages](https://help.github.com/articles/using-jekyll-with-pages)
+[^3]: [Adding a Jekyll theme to your GitHub Pages site](https://help.github.com/articles/adding-a-jekyll-theme-to-your-github-pages-site/)
+[^4]: [GitHub guide: Setting up your GitHub Pages site locally with Jekyll](https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/)
+[^5]: [End-to-end guide to create GitHub site, setup Jekyll, config DNS, CNAME:http://captainwhippet.com/blog/2014/05/11/blog-setup-details.html](http://captainwhippet.com/blog/2014/05/11/blog-setup-details.html)
+[^6]: [Install Ruby on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-ubuntu-16-04)
