@@ -38,8 +38,9 @@ layout: compress
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <!--{{site.baseurl}}/js/jquery.js-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>-->
+
+    <script src="{{site.baseurl}}/js/jquery.js"></script>
      
     <!-- Menu Toggle Script -->
     <script>
@@ -49,12 +50,47 @@ layout: compress
     });
     </script>
 
+    <script type="text/javascript">
+        $(document).ready(function(){            
+            var disqus_loaded = false;
+            var disqus_config = function () {
+               this.page.url = '{{ site.url }}{{ page.url }}';
+               this.page.identifier = '{% if page.disqus_identifier %}{{ page.disqus_identifier}}{% else %}{{ site.url }}{{ page.id }}{% endif %}';
+             };
+            function load_disqus() {
+                
+                if (!disqus_loaded)  {
+                    
+                    disqus_loaded = true;
+
+                    var d = document, s = d.createElement('script');
+
+                    s.async = true;
+                    s.src = 'https://{{site.disqus-shortname}}.disqus.com/embed.js';
+
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+              }
+            }
+
+
+            $(window).scroll(function(e){
+                if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) 
+                {
+                    if (!disqus_loaded) load_disqus(); 
+                }
+            })
+            
+        });
+
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
 
  {% if site.analytics %}{% include analytics.html %}{% endif %}
  {% if site.disqus-shortname %}
-    <script id="dsq-count-scr" src="https://{{site.disqus-shortname}}.disqus.com/count.js" async></script>     
+    <script id="dsq-count-scr" src="https://{{site.disqus-shortname}}.disqus.com/count.js" async></script>
  {% endif %}
- 
 
 </body>
 
